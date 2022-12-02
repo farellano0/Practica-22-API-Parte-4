@@ -1,74 +1,44 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Persons</title>
-    <style type="text/css" media="screen"> /* Se agrega una hoja de estilo para que nuestra tabla se vea bonita */
-        body {font-family: Arial, Helvetica, sans-serif;}
+<%- include('layout/header') %>
 
-        table {
-            font-family: "Lucida Sans Unicode", "Lucida Grande", Sans-Serif; 
-            font-size: 12px;    
-            margin: 45px;     
-            width: 480px; 
-            text-align: left;    
-            border-collapse: collapse;
-        }
+<div class="container">
+    <div class="row">
+        <div class="col-4">
+            <div class="jumbotron mt-4">
+                <h2 class="display-4">Registra Clientes</h2>
+                <p class="lead">Añade nuevos clientes para que reserven habitaciones.</p>
+                <hr class="my-4">
+                <p>Presiona el botón para añadir un nuevo cliente</p>
+                <a href="/person" class="btn btn-primary btn-lg">Registrar</a>
+            </div>
+        </div>
+        <div class="col-8">
+            <h1>Listado de personas</h1>
+            <div id="tabla">
+                <table class="table bg-light">
+                <tr>  <!-- Se crea la tabla y los encabezados que tendrá -->
+                    <th scope="col">Nombre</th>
+                    <th scope="col">Habitación</th>
+                    <th scope="col">Correo</th>
+                </tr>
 
-        th {
-            font-size: 13px;     
-            font-weight: normal;     
-            padding: 8px;     
-            background: #b9c9fe;
-            border-top: 4px solid #aabcfe;    
-            border-bottom: 1px solid #fff; 
-            color: #039; 
-        }
-
-        td {    
-            padding: 8px;     
-            background: #e8edff;     
-            border-bottom: 1px solid #fff;
-            color: #669;    
-            border-top: 1px solid transparent; 
-        }
-
-        tr:hover td {
-            background: #d0dafd; 
-            color: #339; 
-        }
-    </style>
-</head>
-<body>
-    <h1>Listado de personas</h1>
-    <div id="tabla">
-        <table>
-        <tr>  <!-- Se crea la tabla y los encabezados que tendrá -->
-            <th>NSS</th>
-            <th>Nombre</th>
-            <th>Edad</th>
-            <th>Tipo de sangre</th>
-            <th> </th>
-            <th> </th>
-        </tr>
-
-        <!--Para referenciar nuestro objeto JSON, se define con el método Object.keys(nombre_del_objeto_JSON)-->
-    <% Object.keys(persons).forEach(function(prop) { %>
-        <tr> <!--Para agregar la información del objeto JSON a la tabla se utiliza la función forEach() para iterar cada field del objeto JSON-->
-            <td><%- persons[prop].nss%></td>
-            <td><%- persons[prop].nombre%></td>
-            <td><%- persons[prop].edad%></td>
-            <td><%- persons[prop].tipoSangre%></td>
-            <td> <a href="<%= `deletePerson/${persons[prop]._id}`  %>">Delete </a></td>
-            <td> <a href="<%= `findById/${persons[prop]._id}`  %>"> Update </a></td>
-        </tr>
-    <%}); %>
-        </table>
+                <!--Para referenciar nuestro objeto JSON, se define con el método Object.keys(nombre_del_objeto_JSON)-->
+            <% Object.keys(persons).forEach(function(prop) { %>
+                <tr> <!--Para agregar la información del objeto JSON a la tabla se utiliza la función forEach() para iterar cada field del objeto JSON-->
+                    <td scope="row"><%- persons[prop].nombre%></td>
+                    <td><%- persons[prop].habitacion%></td>
+                    <td><%- persons[prop].correo%></td>
+                    <td> <a class="btn btn-danger btn-block" href="<%= `deletePerson/${persons[prop]._id}`  %>">Delete </a></td>
+                    <td> <a class="btn btn-warning btn-block" href="<%= `findById/${persons[prop]._id}`  %>"> Update </a></td>
+                </tr>
+            <%}); %>
+                </table>
+            </div>
+        </div>
     </div>
+    
 
     <br> <!--Se establece un ancla para regresar a la página principal-->
-    <a href="/">Back</a>
-</body>
-</html>
+    <a href="/" class="btn btn-danger btn-lg">Regresar</a>
+</div>
+
+<%- include('layout/footer') %>

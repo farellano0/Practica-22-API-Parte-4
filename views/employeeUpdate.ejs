@@ -1,0 +1,45 @@
+<%- include('layout/header') %>
+<div class="container">
+    <h1>Actualizar empleado</h1>
+        <!-- Formulario para actualizar la información de las personas-->
+        <div class="col-md-4 mx-auto">
+            <div class="card border-secondary mb-3">
+                <div class="card-header">
+                    <h3>Información</h3>
+                </div>
+                <div class="card-body">
+                    <form action="/updateEmployee" method="POST"> <!-- No olvidar poner la ruta en donde se ara la acción, utilizar el método POST-->
+                        <div class="form-group" style="display: none">
+                            <label for="objId">ID:</label>
+                            <input type="text" id="objId" name="objId" value="<%= `${employee._id}` %>" readonly="readonly" class="form-control">
+                        </div>
+                        <div class="form-group">
+                            <label for="nombre">Nombre:</label>
+                            <input type="text" name="nombre" value="<%= `${employee.nombre}` %> " id="nombre" class="form-control" autofocus>
+                        </div>
+                        <div class="form-group">
+                            <label for="edad">Edad:</label>
+                            <input type="number" name="edad" value="<%= `${employee.edad}` %> " id="edad" class="form-control" autofocus>
+                        </div>
+                        <div class="form-group">
+                            <label for="telefono">Teléfono:</label>
+                            <input type="tel" name="telefono" value="<%= `${employee.tel}` %> " id="telefono" class="form-control" autofocus>
+                        </div>
+                        <div class="form-group">
+                            <label for="email">Correo:</label>
+                            <input type="email" name="email" value="<%= `${employee.correo}` %> " id="correo" class="form-control" autofocus>
+                        </div>
+                        <div class="form-group">
+                            <input class="btn btn-success btn-block" type="submit" value="Actualizar">
+                        </div>  
+                    </form>
+                    <br>
+                    <a href="/employee">Back</a>
+                </div>
+            </div>
+        </div>
+</div>
+</body>
+</html>
+
+<%- include('layout/footer') %>

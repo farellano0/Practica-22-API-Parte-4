@@ -1,0 +1,49 @@
+<%- include('layout/header') %>
+
+    <div class="container">
+            <h1> Registrar empleado </h1>
+            <div class="col-md-4 mx-auto">
+                <div class="card border-secondary mb-3">
+                    <div class="card-header">
+                        <h3>Formulario</h3>
+                    </div>
+                    <div class="card-body" style="border-color:black;">
+                        <form action="/addEmployee" method="POST">
+                            <div class="form-group">
+                                <label for="nombre">Nombre:</label>
+                                <input type="text" name="nombre" id="nombre" class="form-control" placeholder="Nombre completo" autofocus>
+                            </div>
+                            <div class="form-group">
+                                <label for="edad">Edad:</label>
+                                <input type="number" name="edad" id="edad" placeholder="Edad" class="form-control" autofocus>
+                            </div>
+                            <div class="form-group">
+                                <label for="telefono">Teléfono:</label>
+                                <input type="tel" name="telefono" id="telefono" placeholder="Teléfono" class="form-control" autofocus>
+                            </div>
+                            <div class="form-group">
+                                <label for="correo">Correo:</label>
+                                <input type="email" name="correo" id="correo" placeholder="Correo Electrónico" class="form-control" autofocus>
+                            </div>
+                            <div class="form-group">
+                                <label for="tipoSangre">Tipo de sangre:</label>
+                                <input type="text" name="tipoSangre" id="tipoSangre" placeholder="tipoSangre" class="form-control" autofocus>
+                            </div>
+                            <div class="form-group">
+                                <label for="nss">NSS:</label>
+                                <input type="text" name="nss" id="nss" placeholder="nss" class="form-control" autofocus>
+                            </div>
+                            <div class="form-group">
+                                <button class="btn btn-success btn-block" type="submit" style="margin-top: 25px;">
+                                    Registrar
+                                </button>
+                                <!---<input type="submit" value="Submit">--->
+                            </div>
+                        </form>
+                    </div>
+                </div>
+                <a href="/employees" class="btn btn-danger btn-block">Cancelar</a>
+            </div>
+    </div>
+
+<%- include('layout/footer') %>

@@ -1,30 +1,41 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Actualizar persona</title>
-</head>
-<body>
-
+<%- include('layout/header') %>
+<div class="container">
     <h1>Actualizar persona</h1>
         <!-- Formulario para actualizar la información de las personas-->
-    <form action="/updatePerson" method="POST"> <!-- No olvidar poner la ruta en donde se ara la acción, utilizar el método POST-->
-        <label for="nss">NSS:</label>
-        <input type="text" name="nss" value="<%= `${person.nss}` %> " id="nss"><br><br>
-        <label for="nombre">Nombre:</label>
-        <input type="text" name="nombre" value="<%= `${person.nombre}` %> " id="nombre"><br><br>
-        <label for="edad">Edad:</label>
-        <input type="text" name="edad" value="<%= `${person.edad}` %> " id="edad"><br><br>
-        <label for="tipoSangre">Tipo de sangre:</label>
-        <input type="text" name="tipoSangre" value="<%= `${person.tipoSangre}` %> " id="tipoSangre"><br><br>
-        <label for="objId">ID:</label>
-        <input type="text" id="objId" name="objId" value="<%= `${person._id}` %>"><br><br>
-
-        <input type="submit" value="Submit">
-    </form>
-    <br>
-    <a href="/persons">Back</a>
+        <div class="col-md-4 mx-auto">
+            <div class="card border-secondary mb-3">
+                <div class="card-header">
+                    <h3>Información</h3>
+                </div>
+                <div class="card-body">
+                    <form action="/updatePerson" method="POST"> <!-- No olvidar poner la ruta en donde se ara la acción, utilizar el método POST-->
+                        <div class="form-group" style="display: none">
+                            <label for="objId">ID:</label>
+                            <input type="text" id="objId" name="objId" value="<%= `${person._id}` %>" readonly="readonly" class="form-control">
+                        </div>
+                        <div class="form-group">
+                            <label for="nombre">Nombre:</label>
+                            <input type="text" name="nombre" value="<%= `${person.nombre}` %> " id="nombre" class="form-control" autofocus>
+                        </div>
+                        <div class="form-group">
+                            <label for="habitacion">Habitación:</label>
+                            <input type="number" name="habitacion" value="<%= `${person.habitacion}` %> " id="habitacion" class="form-control" autofocus>
+                        </div>
+                        <div class="form-group">
+                            <label for="correo">Correo:</label>
+                            <input type="text" name="correo" value="<%= `${person.correo}` %> " id="correo" class="form-control" autofocus>
+                        </div>
+                        <div class="form-group">
+                            <input class="btn btn-success btn-block" type="submit" value="Actualizar">
+                        </div>  
+                    </form>
+                    <br>
+                    <a href="/persons">Back</a>
+                </div>
+            </div>
+        </div>
+</div>
 </body>
 </html>
+
+<%- include('layout/footer') %>

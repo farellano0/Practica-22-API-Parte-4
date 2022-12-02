@@ -1,21 +1,30 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Práctica 21 | PW</title>
-    <script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>
-</head>
-<body>
-    <h1>Página Principal</h1>
-    <h2>Práctica #22: Servidor para API parte 4</h2>
-    <p>Presione <strong>Agregar persona</strong> para agregar una persona.</p>
-    <a href="/person">Agregar Persona</a>
-    <br>
-    <p>Para ver el listado de las personas, presione <strong>Listado</strong></p>
-    <a href="/persons">Listado</a>
-    
+<%- include('layout/header') %>
 
-</body>
-</html>
+<div class="container">
+    <h1 style="text-align:center; margin: 5px;">Bienvenido al HotelP3</h1>
+    <br>
+    <div class="row">
+        <div class="col-6">
+            <div class="jumbotron">
+                <h2 class="display-4">Registra al huésped</h2>
+                <p class="lead">Registra al huésped para reservar habitación.</p>
+                <hr class="my-4">
+                <a href="/person" class="btn btn-primary btn-lg">Registrar</a>
+            </div>
+        </div>
+        <div class="col-6">
+            <div class="jumbotron">
+                <h2 class="display-4">Lista de huéspedes</h2>
+                <p class="lead">Observa la lista de huéspedes</p>
+                <hr class="my-4">
+                <a href="/persons" class="btn btn-primary btn-lg">Ir a la lista</a>
+            </div>
+        </div>
+</div>
+
+<%- include('layout/footer') %> 
+
+
+
+    
+    

@@ -1,0 +1,41 @@
+<%- include('layout/header') %>
+
+<div class="container">
+    <div class="row">
+        <div class="col-12">
+            <h1>Listado de empleados</h1>
+            <div id="tabla">
+                <table class="table bg-light">
+                <tr>  <!-- Se crea la tabla y los encabezados que tendrá -->
+                    <th scope="col">Nombre</th>
+                    <th scope="col">Edad</th>
+                    <th scope="col">Teléfono</th>
+                    <th scope="col">Correo</th>
+                    <th scope="col">Tipo de sangre</th>
+                    <th scope="col">NSS</th>
+                </tr>
+
+                <!--Para referenciar nuestro objeto JSON, se define con el método Object.keys(nombre_del_objeto_JSON)-->
+            <% Object.keys(employees).forEach(function(prop) { %>
+                <tr> <!--Para agregar la información del objeto JSON a la tabla se utiliza la función forEach() para iterar cada field del objeto JSON-->
+                    <td scope="row"><%- employees[prop].nombre%></td>
+                    <td><%- employees[prop].edad%></td>
+                    <td><%- employees[prop].telefono%></td>
+                    <td><%- employees[prop].correo%></td>
+                    <td><%- employees[prop].tipoSangre%></td>
+                    <td><%- employees[prop].nss%></td>
+                    <td> <a class="btn btn-danger btn-block" href="<%= `deletePerson/${employees[prop]._id}`  %>">Delete </a></td>
+                    <td> <a class="btn btn-warning btn-block" href="<%= `findById/${employees[prop]._id}`  %>"> Update </a></td>
+                </tr>
+            <%}); %>
+                </table>
+            </div>
+        </div>
+    </div>
+    
+
+    <br> <!--Se establece un ancla para regresar a la página principal-->
+    <a href="/" class="btn btn-danger btn-lg">Regresar</a>
+</div>
+
+<%- include('layout/footer') %>

@@ -19,14 +19,13 @@ router.get('/person', function (req, res) {
 router.post('/addPerson', function(req, res) { //Método donde se crea una nueva personas con su
     const myPerson = new Person({             // información y se guarda en la BD.
         nombre: req.body.nombre,
-        edad: req.body.edad,
-        tipoSangre: req.body.tipoSangre,
-        nss: req.body.nss }); //crea la entidad
+        habitacion: req.body.habitacion,
+        correo: req.body.correo }); //crea la entidad
         myPerson.save(); // guarda en bd
         res.redirect('/persons')
 });
 
-/* DELETE PERSONE */
+/* DELETE PERSON */
 router.get('/deletePerson/:id', function (req, res, next) {
     Person.findByIdAndRemove(req.params.id, req.body, function (err, post) {
         if(err) return next(err);
@@ -46,9 +45,8 @@ router.get('/findById/:id', function(req, res, next){
 router.post('/updatePerson', function(req, res, next){
     Person.findByIdAndUpdate(req.body.objId, {
         nombre: req.body.nombre,
-        edad: req.body.edad,
-        tipoSangre: req.body.tipoSangre,
-        nss: req.body.nss
+        habitacion: req.body.habitacion,
+        correo: req.body.correo
     }, function(err, post){
         if (err) return next(err)
         res.redirect('/persons');
